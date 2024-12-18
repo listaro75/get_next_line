@@ -17,11 +17,17 @@
 #  define BUFFER_SIZE 42
 # endif
 
+# include <fcntl.h>
 # include <limits.h>
 # include <stdarg.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <fcntl.h>
+
+char	*ft_strchr(const char *str, int c);
+char	*ft_strdup(const char *s);
+int		ft_strlen(const char *str);
+char	*ft_substr(const char *s, unsigned int start, size_t len);
+char	*ft_strjoin(const char *s1, const char *s2);
 
 #endif

@@ -14,24 +14,16 @@
 
 int	main(void)
 {
-	int		fd;
-	char	buffer[42];
-	ssize_t	bytes_read;
+	int fd;
+	char reserve[BUFFER_SIZE];
+	int nb_byte;
 
 	fd = open("text.txt", O_RDONLY);
 	if (fd == -1)
-	{
-		perror("Erreur lors de l'o");
 		return (1);
-	}
-	
-	while ((bytes_read - read(fd, buffer, 42)) > 0)
-	{
-		write (STDOUT_FILENO, buffer, bytes_read);
-	}
-	if (bytes_read == -1)
-	{
-		perror()
-	}
-
+	nb_byte = read(fd,reserve,5);
+	reserve[5] = 0;
+	printf("%s",reserve);
+	close(fd);
+	return (0);
 }
