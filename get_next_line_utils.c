@@ -58,27 +58,6 @@ int	ft_strlen(const char *str)
 	return (i);
 }
 
-char	*ft_substr(const char *s, unsigned int start, size_t len)
-{
-	char	*ptr;
-	size_t	i;
-
-	if ((size_t)start >= (size_t)ft_strlen(s))
-		len = 0;
-	else if ((size_t)start + len > (size_t)ft_strlen(s))
-		len = ft_strlen(s) - start;
-	ptr = (char *)malloc((len + 1) * sizeof(char));
-	if (!ptr)
-		return (NULL);
-	i = 0;
-	while (i < len)
-	{
-		ptr[i] = *(char *)(s + i + start);
-		i++;
-	}
-	ptr[i] = 0;
-	return (ptr);
-}
 
 char	*ft_strjoin(const char *s1, const char *s2)
 {
@@ -105,3 +84,25 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	ptr[i] = 0;
 	return (ptr);
 }
+
+// void	*ft_calloc(size_t count, size_t size)
+// {
+// 	size_t	bytes;
+// 	void	*new;
+// 	size_t	i;
+
+// 	i = 0;
+// 	bytes = size * count;
+// 	if (size != 0 && ((bytes / size) != count))
+// 		return (NULL);
+// 	new = (void *)malloc(count * size);
+// 	if (!new)
+// 		return (NULL);
+// 	while (i < (size * count))
+// 	{
+// 		new = 0;
+// 		i++;
+// 	}
+	
+// 	return (new);
+// }
