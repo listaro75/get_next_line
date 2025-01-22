@@ -6,7 +6,7 @@
 /*   By: luda-cun <luda-cun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 18:49:22 by luda-cun          #+#    #+#             */
-/*   Updated: 2025/01/20 19:02:20 by luda-cun         ###   ########.fr       */
+/*   Updated: 2025/01/22 15:21:55 by luda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,9 @@
 # include <unistd.h>
 
 char	*get_next_line(int fd);
+char	*ft_strjoin(const char *s1, const char *s2);
+int		ft_strlen(const char *str);
+void	*ft_calloc(size_t count, size_t size);
+
 
 #endif
