@@ -6,11 +6,23 @@
 /*   By: luda-cun <luda-cun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 18:53:05 by luda-cun          #+#    #+#             */
-/*   Updated: 2025/01/22 15:35:25 by luda-cun         ###   ########.fr       */
+/*   Updated: 2025/01/22 15:41:15 by luda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+void	ft_bzero(void *s, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < n)
+	{
+		*(unsigned char *)(s + i) = 0;
+		i++;
+	}
+}
 
 int	ft_strlen(const char *str)
 {

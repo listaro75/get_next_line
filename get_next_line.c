@@ -6,7 +6,7 @@
 /*   By: luda-cun <luda-cun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 18:48:15 by luda-cun          #+#    #+#             */
-/*   Updated: 2025/01/22 15:34:40 by luda-cun         ###   ########.fr       */
+/*   Updated: 2025/01/22 16:41:42 by luda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char	*ft_line_ret(char *stash)
 
 	i = 0;
 	j = 0;
-	while (stash[i] != '\n')
+	while (stash[i] != '\n' && stash[i])
 		i++;
 	line = (char *)malloc(sizeof(char) * (i + 2));
 	if (!line)
@@ -77,7 +77,7 @@ char	*ft_line(int fd, char *stash)
 {
 	char	*buf;
 	int		verif;
-
+			
 	if (!stash)
 		stash = ft_calloc(1, 1);
 	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
@@ -87,9 +87,11 @@ char	*ft_line(int fd, char *stash)
 	while (verif > 0)
 	{
 		verif = read(fd, buf, BUFFER_SIZE);
+		if (verif == 0)
+			return (free(buf),stash) ;
 		if (verif < 0)
 			return (free(buf), free(stash), NULL);
-		buf[BUFFER_SIZE] = 0;
+		buf[verif] = 0;
 		stash = ft_new_stach(stash, buf);
 		if (strchr(stash, '\n'))
 			break ;
@@ -107,12 +109,15 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (NULL);
 	stash = ft_line(fd, stash);
+	if (!stash)
+		return (NULL);
+	line = ft_line_ret(stash);
 	if (!strchr(stash, '\n'))
 	{
-		free(line);
-		return (stash);
+		free(stash);
+		stash = NULL;
+		return (line);
 	}
-	line = ft_line_ret(stash);
 	stash = ft_remain(stash);
 	return (line);
 }
