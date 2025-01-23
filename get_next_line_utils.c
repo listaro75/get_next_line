@@ -6,23 +6,11 @@
 /*   By: luda-cun <luda-cun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 18:53:05 by luda-cun          #+#    #+#             */
-/*   Updated: 2025/01/22 15:41:15 by luda-cun         ###   ########.fr       */
+/*   Updated: 2025/01/23 13:50:14 by luda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-void	ft_bzero(void *s, size_t n)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < n)
-	{
-		*(unsigned char *)(s + i) = 0;
-		i++;
-	}
-}
 
 int	ft_strlen(const char *str)
 {
@@ -64,15 +52,41 @@ char	*ft_strjoin(const char *s1, const char *s2)
 
 void	*ft_calloc(size_t count, size_t size)
 {
+	size_t	i;
 	size_t	bytes;
-	void	*new;
+	char	*new;
 
+	i = 0;
 	bytes = size * count;
 	if (size != 0 && ((bytes / size) != count))
 		return (NULL);
-	new = (void *)malloc(count * size);
+	new = (char *)malloc(count * size);
 	if (!new)
 		return (NULL);
-	ft_bzero(new, size * count);
+	while (i < bytes)
+		new[i++] = 0;
 	return (new);
+}
+
+int	_verif_stash(char *str)
+{
+	if (str[0] == '\0')
+		return (1);
+	return (0);
+}
+
+char	*ft_strchr(const char *str, int c)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == (char)c)
+			return ((char *)(str + i));
+		i++;
+	}
+	if (str[i] == (char)c)
+		return ((char *)(str + i));
+	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: luda-cun <luda-cun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 18:49:22 by luda-cun          #+#    #+#             */
-/*   Updated: 2025/01/22 15:42:40 by luda-cun         ###   ########.fr       */
+/*   Updated: 2025/01/23 13:50:28 by luda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,7 @@ char	*ft_strjoin(const char *s1, const char *s2);
 int		ft_strlen(const char *str);
 void	*ft_calloc(size_t count, size_t size);
 void	ft_bzero(void *s, size_t n);
+int		_verif_stash(char *str);
+char	*ft_strchr(const char *str, int c);
 
 #endif
